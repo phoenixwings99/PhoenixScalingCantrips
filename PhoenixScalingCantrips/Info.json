@@ -1,12 +1,14 @@
 ﻿{
   "Id": "PhoenixScalingCantrips",
   "DisplayName": "Phoenix's Scaling Cantrips Remastered",
-  "Author": "",
+  "Author": "pheonixwings99",
   "Version": "1.0.0",
   "ManagerVersion": "0.27.11",
-  "Requirements": [],
+  "Requirements": [ "ModMenu-2.0.0", "TabletopTweaks-Core" ],
   "AssemblyName": "PhoenixScalingCantrips.dll",
   "EntryMethod": "PhoenixScalingCantrips.Main.Load",
   "HomePage": "",
-  "Repository": ""
+  "Repository": "https://github.com/phoenixwings99/PhoenixScalingCantrips",
+  "LoadAfter": "CharacterOptionsPlus"
+
 }

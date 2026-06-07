@@ -1,54 +1,121 @@
-﻿using HarmonyLib;
-using System.Text;
-using System.Reflection;
+﻿using BlueprintCore.Utils;
+using HarmonyLib;
+using TabletopTweaks.Core.NewEvents;
 using UnityModManagerNet;
-using BlueprintCore.Utils;
-using Kingmaker.Blueprints.JsonSystem;
+using Kingmaker.PubSubSystem;
+using System;
+using PhoenixScalingCantrips.Spells;
+
 
 namespace PhoenixScalingCantrips;
+public static class Main
+{
+    private static readonly Logging.Logger Logger = Logging.GetLogger(nameof(Main));
 
-public static class Main {
-    internal static Harmony HarmonyInstance;
-    internal static UnityModManager.ModEntry.ModLogger Log;
+    public static bool Load(UnityModManager.ModEntry modEntry)
+    {
+        try
+        {
+            var harmony = new Harmony(modEntry.Info.Id);
+            harmony.PatchAll();
 
-    public static bool Load(UnityModManager.ModEntry modEntry) {
-        Log = modEntry.Logger;
-        modEntry.OnGUI = OnGUI;
-        HarmonyInstance = new Harmony(modEntry.Info.Id);
-        try {
-            HarmonyInstance.PatchAll(Assembly.GetExecutingAssembly());
-        } catch {
-            HarmonyInstance.UnpatchAll(HarmonyInstance.Id);
-            throw;
+            EventBus.Subscribe(new BlueprintCacheInitHandler());
+
+            Logger.Log("Finished patching.");
+        }
+        catch (Exception e)
+        {
+            Logger.LogException("Failed to patch", e);
         }
         return true;
     }
 
-    public static void OnGUI(UnityModManager.ModEntry modEntry) {
-
-    }
-
-    [HarmonyPatch(typeof(BlueprintsCache))]
-    public static class BlueprintsCaches_Patch {
+    class BlueprintCacheInitHandler : IBlueprintCacheInitHandler
+    {
         private static bool Initialized = false;
+        private static bool InitializeDelayed = false;
 
-        [HarmonyPriority(Priority.First)]
-        [HarmonyPatch(nameof(BlueprintsCache.Init)), HarmonyPostfix]
-        public static void Init_Postfix() {
-            try {
-                if (Initialized) {
-                    Log.Log("Already initialized blueprints cache.");
+        public void AfterBlueprintCachePatches()
+        {
+            try
+            {
+                if (InitializeDelayed)
+                {
+                    Logger.Log("Already initialized blueprints cache.");
+                    return;
+                }
+                InitializeDelayed = true;
+
+
+            }
+            catch (Exception e)
+            {
+                Logger.LogException("Delayed blueprint configuration failed.", e);
+            }
+        }
+
+        public void BeforeBlueprintCacheInit() { }
+
+        public void BeforeBlueprintCachePatches() { }
+
+        public void AfterBlueprintCacheInit()
+        {
+            try
+            {
+                if (Initialized)
+                {
+                    Logger.Log("Already initialized blueprints cache.");
                     return;
                 }
                 Initialized = true;
 
-                Log.Log("Patching blueprints.");
-                // Insert your mod's patching methods here
-                // Example
-                // SuperAwesomeFeat.Configure()
-            } catch (Exception e) {
-                Log.Log(string.Concat("Failed to initialize.", e));
+                Logger.Log("Loading Strings");
+                //First strings
+                LocalizationTool.LoadEmbeddedLocalizationPacks(
+                  "PhoenixScalingCantrips.LocalizedStrings.json"
+                  );
+
+                Logger.Log("Building Settings");
+                // Then settings
+                Settings.Init();
+                CreateSpells();
+                ScaleSpells();
+                ProliferateSpells();
+
+
+            }
+            catch (Exception e)
+            {
+                Logger.LogException("Failed to initialize.", e);
             }
         }
+
+        private void CreateSpells()
+        {
+            CreateRayCantrips.CreateFirebolt();
+            CreateRayCantrips.CreateDissonantNote();
+            CreateTouchCantrips.CreateBurningTouch();
+            CreateTouchCantrips.CreateFrostyTouch();
+            CreateTouchCantrips.CreateLesserCorrosiveTouch();
+            CreateTouchCantrips.CreateLesserShockingGrasp();
+            CreateTouchCantrips.CreateDissonantTouch();
+        }
+
+        private  void ScaleSpells()
+        {
+            
+            EditCantrips.Edit();
+
+        }
+
+        private void ProliferateSpells()
+        {
+            
+            ProliferateCantrips.Proliferate();
+        }
+
+
     }
+
 }
+

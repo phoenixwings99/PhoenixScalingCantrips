@@ -1,12 +1,203 @@
 [
   {
-    "Key": "Example.Name",
+    "Key": "PSC.Settings.Title",
     "ProcessTemplates": false,
-    "enGB": "Name of your Feat/Class/Whatever"
+    "enGB": "Phoenix's Scaling Cantrips"
   },
 
   {
-    "Key": "Example.Description",
-    "enGB": "Description for your Feat/Class/Whatever"
+    "Key": "PSC.Settings.VerboseLogging",
+    "ProcessTemplates": false,
+    "enGB": "Enable Detailed Logs",
+    "zhCN": "允许详细日志",
+    "ruRU": "Включить подробный лог игры",
+    "esES": "Habilitar registros detallados"
+  },
+  {
+    "Key": "PSC.Settings.VerboseLogging.Description",
+    "ProcessTemplates": false,
+    "enGB": "REQUIRES RESTART\nTurn this on and restart your game to get detailed logs for capturing bug reports.\nThis will probably cause lag as the logging is extremely detailed, but this makes it a lot easier to identify and fix bugs quickly.",
+    "zhCN": "需要重启\n开启该选项并重启游戏，获得用于报告BUG的详细日志。\n可能造成卡顿，但是有助于快速找到并修复BUG。",
+    "ruRU": "ТРЕБУЕТСЯ ПЕРЕЗАГРУЗКА\n\nВключите эту опцию и перезапустите игру, чтобы получить подробный лог, если хотите отправить баг-репорт.\nДанная настройка может вызвать заметное снижение производительности, но позволит проще выявить и устранить ошибки.",
+    "esES": "Requiere reiniciar\nEncienda esto y reinicie su juego para obtener registros detallados para capturar informes de errores.\nEsto probablemente causará retraso ya que el registro es extremadamente detallado, pero esto hace que sea mucho más fácil identificar y arreglar los errores rápidamente."
+  },
+
+  {
+    "Key": "PSC.Settings.Description",
+    "enGB": "Makes existing attack cantrips (and Virtue) scale, adds cantrips for all elements (fire/lightning/ice/acid/sonic) and range (touch/ray) combos, and adds customizability for all of them"
+  },
+  {
+    "Key": "PSC.Settings.EnableScaling",
+    "enGB": "Enable Scaling for Cantrips"
+  },
+  {
+    "Key": "PSC.Settings.MaxDice",
+    "enGB": "Select Maximum Dice For Attack Cantrips"
+  },
+  {
+    "Key": "PSC.Settings.DiceRate",
+    "enGB": "Select Caster Levels Per Die"
+  },
+  {
+    "Key": "PSC.Settings.AddLesserCorrosiveTouch",
+    "enGB": "Add Lesser Corrosive Touch"
+  },
+  {
+    "Key": "PSC.Settings.AddFirebolt",
+    "enGB": "Add Firebolt"
+  },
+  {
+    "Key": "PSC.Settings.AddBurningTouch",
+    "enGB": "Add Burning Touch"
+  },
+  {
+    "Key": "PSC.Settings.AddFrostyTouch",
+    "enGB": "Add Frosty Touch"
+  },
+  {
+    "Key": "PSC.Settings.AddLesserShockingGrasp",
+    "enGB": "Add Lesser Shocking Grasp"
+  },
+  {
+    "Key": "PSC.Settings.AddPainfulNote",
+    "enGB": "Add Painful Note"
+  },
+  {
+    "Key": "PSC.Settings.AddDissonantTouch",
+    "enGB": "Add Dissonant Touch"
+  },
+  {
+    "Key": "PSC.Settings.JoltForMagus",
+    "enGB": "Add Jolt To Magus"
+  },
+  {
+    "Key": "PSC.Settings.SonicToArrowsong",
+    "enGB": "Add Sonic Spells to Arrowsong Minstrel"
+  },
+  {
+    "Key": "PSC.Settings.SonicToArrowsong.Desc",
+    "enGB": "Adds Painful Note and Dissonant Touch to Arrowsong Minstrel. Requires Character Options Plus"
+  },
+  {
+    "Key": "Firebolt.Name",
+    "enGB": "Firebolt"
+  },
+  {
+    "Key": "Firebolt.Desc",
+    "enGB": "You cause a bolt of fire to strike the target with a successful ranged {g|Encyclopedia:TouchAttack}touch attack{/g}. The {g|Encyclopedia:Spell}spell{/g} deals {g|Encyclopedia:Dice}1d3{/g} points of {g|Encyclopedia:Energy_Damage}fire damage{/g}"
+  },
+  {
+    "Key": "Firebolt.Desc2",
+    "enGB": "You cause a bolt of fire to strike the target with a successful ranged {g|Encyclopedia:TouchAttack}touch attack{/g}. The {g|Encyclopedia:Spell}spell{/g} deals {g|Encyclopedia:Dice}1d3{/g} points of {g|Encyclopedia:Energy_Damage}fire damage{/g}, plus another die per two caster levels past first (maximum 6d3)."
+  },
+  {
+    "Key": "BurningTouch.Name",
+    "enGB": "Burning Touch"
+  },
+  {
+    "Key": "BurningTouch.Desc",
+    "enGB": "You sheath your hand in fire and make a touch attack against the target. The {g|Encyclopedia:Spell}spell{/g} deals {g|Encyclopedia:Dice}1d3{/g} points of {g|Encyclopedia:Energy_Damage}fire damage{/g}"
+  },
+  {
+    "Key": "BurningTouch.Desc2",
+    "enGB": "You sheath your hand in fire and make a touch attack against the target. The {g|Encyclopedia:Spell}spell{/g} deals {g|Encyclopedia:Dice}1d4{/g} points of {g|Encyclopedia:Energy_Damage}fire damage{/g}, plus another die per two caster levels past first (maximum 6d3)."
+
+  },
+  {
+    "Key": "PainfulNote.Name",
+    "enGB": "Painful Note"
+  },
+  {
+    "Key": "PainfulNote.Desc",
+    "enGB": "You cause a bolt of destructive resonance to strike the target with a successful ranged {g|Encyclopedia:TouchAttack}touch attack{/g}. The {g|Encyclopedia:Spell}spell{/g} deals {g|Encyclopedia:Dice}1d2{/g} points of {g|Encyclopedia:Energy_Damage}sonic damage{/g}"
+  },
+  {
+    "Key": "PainfulNote.Desc2",
+    "enGB": "You cause a bolt of destructive resonance to strike the target with a successful ranged {g|Encyclopedia:TouchAttack}touch attack{/g}. The {g|Encyclopedia:Spell}spell{/g} deals {g|Encyclopedia:Dice}1d2{/g} points of {g|Encyclopedia:Energy_Damage}sonic damage{/g}, plus another die per two caster levels past first (maximum 6d3)."
+  },
+  {
+    "Key": "DissonantTouch.Name",
+    "enGB": "Dissonant Touch"
+  },
+  {
+    "Key": "DissonantTouch.Desc",
+    "enGB": "You sheath your hand in destructive vibrations and make a touch attack against the target. The {g|Encyclopedia:Spell}spell{/g} deals {g|Encyclopedia:Dice}1d3{/g} points of {g|Encyclopedia:Energy_Damage}sonic damage{/g}."
+  },
+  {
+    "Key": "DissonantTouch.Desc2",
+    "enGB": "You sheath your hand in destructive vibrations and make a touch attack against the target. The {g|Encyclopedia:Spell}spell{/g} deals {g|Encyclopedia:Dice}1d3{/g} points of {g|Encyclopedia:Energy_Damage}sonic damage{/g}, plus another die per two caster levels past first (maximum 6d3)."
+
+  },
+  {
+    "Key": "LesserCorrosiveTouch.Name",
+    "enGB": "Lesser Corrosive Touch"
+  },
+  {
+    "Key": "LesserCorrosiveTouch.Desc",
+    "enGB": "You sheath your hand in acid and make a touch attack against the target. The {g|Encyclopedia:Spell}spell{/g} deals {g|Encyclopedia:Dice}1d4{/g} points of {g|Encyclopedia:Energy_Damage}acid damage{/g}."
+  },
+  {
+    "Key": "LesserCorrosiveTouch.Desc2",
+    "enGB": "You sheath your hand in acid and make a touch attack against the target. The {g|Encyclopedia:Spell}spell{/g} deals {g|Encyclopedia:Dice}1d4{/g} points of {g|Encyclopedia:Energy_Damage}acid damage{/g}, plus another die per two caster levels past first (maximum 6d4)."
+
+  },
+  {
+    "Key": "LesserShockingGrasp.Name",
+    "enGB": "Lesser Shocking Grasp"
+  },
+  {
+    "Key": "LesserShockingGrasp.Desc",
+    "enGB": "You sheath your hand in electricty and make a touch attack against the target. The {g|Encyclopedia:Spell}spell{/g} deals {g|Encyclopedia:Dice}1d4{/g} points of {g|Encyclopedia:Energy_Damage}electricty damage{/g}."
+  },
+  {
+    "Key": "LesserShockingGrasp.Desc2",
+    "enGB": "You sheath your hand in electricty and make a touch attack against the target. The {g|Encyclopedia:Spell}spell{/g} deals {g|Encyclopedia:Dice}1d4{/g} points of {g|Encyclopedia:Energy_Damage}electricty damage{/g}, plus another die per two caster levels past first (maximum 6d4)."
+
+  },
+  {
+    "Key": "FrostyTouch.Name",
+    "enGB": "Frosty Touch"
+  },
+  {
+    "Key": "FrostyTouch.Desc",
+    "enGB": "You sheath your hand in ice and make a touch attack against the target. The {g|Encyclopedia:Spell}spell{/g} deals {g|Encyclopedia:Dice}1d4{/g} points of {g|Encyclopedia:Energy_Damage}cold damage{/g}."
+  },
+  {
+    "Key": "FrostyTouch.Desc2",
+    "enGB": "You sheath your hand in ice and make a touch attack against the target. The {g|Encyclopedia:Spell}spell{/g} deals {g|Encyclopedia:Dice}1d4{/g} points of {g|Encyclopedia:Energy_Damage}cold damage{/g}, plus another die per two caster levels past first (maximum 6d4)."
+
+  },
+  {
+    "Key": "DivineZap.Desc2",
+    "enGB": "You unleash your divine powers against a single target. The target takes {g|Encyclopedia:Dice}1d3{/g} points of divine {g|Encyclopedia:Damage}damage{/g}, plus another die per two caster levels past first (maximum 6d3). A successful {g|Encyclopedia:Saving_Throw}save{/g} halves the damage."
+
+  },
+
+  {
+    "Key": "Jolt.Desc2",
+    "enGB": "You cause a spark of electricity to strike the target with a successful ranged {g|Encyclopedia:TouchAttack}touch attack{/g}. The {g|Encyclopedia:Spell}spell{/g} deals {g|Encyclopedia:Dice}1d3{/g} points of {g|Encyclopedia:Energy_Damage}electricity damage{/g}, plus another die per two caster levels past first (maximum 6d3)."
+
+  },
+  {
+    "Key": "RayOfFrost.Desc2",
+    "enGB": "A ray of freezing air and ice projects from your pointing finger. You must succeed on a ranged {g|Encyclopedia:TouchAttack}touch attack{/g} with the ray to deal {g|Encyclopedia:Damage}damage{/g} to a target. The ray deals {g|Encyclopedia:Dice}1d3{/g} points of {g|Encyclopedia:Energy_Damage}cold damage{/g}, plus another die per two caster levels past first (maximum 6d3)."
+
+  },
+  {
+    "Key": "AcidSplash.Desc2",
+    "enGB": "You fire a small orb of acid at the target. You must succeed on a ranged {g|Encyclopedia:TouchAttack}touch attack{/g} to hit your target. The orb deals 1–3 ({g|Encyclopedia:Dice}1d3{/g}) points of {g|Encyclopedia:Energy_Damage}acid damage{/g}, plus another die per two caster levels past first (maximum 6d3)."
+
+  },
+  {
+    "Key": "DisruptUndead.Desc2",
+    "enGB": "You direct a ray of positive energy. You must make a ranged {g|Encyclopedia:TouchAttack}touch attack{/g} to hit, and if the ray hits an undead creature, it deals {g|Encyclopedia:Dice}1d6{/g} points of {g|Encyclopedia:Damage}damage{/g} to it, plus another die per two caster levels past first (maximum 6d6)"
+
+  },
+  {
+    "Key": "Virtue.Desc2",
+    "enGB": "With a {g|Encyclopedia:TouchAttack}touch{/g}, you infuse a creature with a tiny surge of life, granting the subject 1 temporary hit point, plus another per two caster levels after first to a maximum of 10"
+
   }
+
+
 ]
