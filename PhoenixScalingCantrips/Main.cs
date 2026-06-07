@@ -95,7 +95,7 @@ public static class Main
 
         private void CreateSpells()
         {
-            CreateRayCantrips.CreateFirebolt();
+            
             CreateRayCantrips.CreateDissonantNote();
             CreateTouchCantrips.CreateBurningTouch();
             CreateTouchCantrips.CreateFrostyTouch();

@@ -1,11 +1,21 @@
-﻿using BlueprintCore.Blueprints.CustomConfigurators.UnitLogic.Abilities;
+﻿using BlueprintCore.Actions.Builder;
+using BlueprintCore.Actions.Builder.ContextEx;
+using BlueprintCore.Blueprints.CustomConfigurators.UnitLogic.Abilities;
+using BlueprintCore.Conditions.Builder;
+using BlueprintCore.Conditions.Builder.BasicEx;
 using BlueprintCore.Utils;
+using BlueprintCore.Utils.Types;
 using Kingmaker.Blueprints;
+using Kingmaker.Designers.EventConditionActionSystem.Actions;
+using Kingmaker.Enums.Damage;
+using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Components;
+using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.UnitLogic.Mechanics.Components;
 using Microsoft.Build.Utilities;
+using Owlcat.Runtime.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,36 +56,72 @@ namespace PhoenixScalingCantrips.Spells
 
         private static void EditCantrip(BlueprintAbilityReference cantrip)
         {
-            Logging.GetLogger("PSC").Log("Scaling " + cantrip.NameSafe());
-            var spell = cantrip.Get();
+            try
+            {
+                Logging.GetLogger("PSC").Log("Scaling " + cantrip.NameSafe());
+                var spell = cantrip.Get();
 
-            AbilityEffectStickyTouch sticky = spell.GetComponent<AbilityEffectStickyTouch>();
-            if (sticky != null)
-            {
-                spell = sticky.TouchDeliveryAbility;
-            }
+                AbilityEffectStickyTouch sticky = spell.GetComponent<AbilityEffectStickyTouch>();
+                if (sticky != null)
+                {
+                    spell = sticky.TouchDeliveryAbility;
+                }
 
-            var dmg = spell.GetComponent<AbilityEffectRunAction>().Actions.Actions.FirstOrDefault(x => x is ContextActionDealDamage) as ContextActionDealDamage;
-            if ( (dmg is null))
-            {
-                Logging.GetLogger("PSC").Log("DMG is null for " + cantrip.NameSafe());
+                var dmg = spell.GetComponent<AbilityEffectRunAction>().Actions.Actions.FirstOrDefault(x => x is ContextActionDealDamage) as ContextActionDealDamage;
+                if ((dmg is null))
+                {
+                    var existingCRC = spell.GetComponent<ContextRankConfig>();
+                    spell.RemoveComponent(existingCRC);
+                    var existingAction = spell.GetComponent<AbilityEffectRunAction>();
+                    Conditional conditional = (Conditional)existingAction.Actions.Actions.FirstOrDefault(x => x is Conditional);
+                    (conditional.IfTrue.Actions.First(x => x is ContextActionDealDamage) as ContextActionDealDamage).Value.DiceCountValue.ValueRank = Kingmaker.Enums.AbilityRankType.DamageDiceAlternative;
+                    (conditional.IfTrue.Actions.First(x => x is ContextActionDealDamage) as ContextActionDealDamage).Value.DiceType = Kingmaker.RuleSystem.DiceType.D4;
+                    (conditional.IfFalse.Actions.First(x => x is ContextActionDealDamage) as ContextActionDealDamage).Value.DiceCountValue.ValueRank = Kingmaker.Enums.AbilityRankType.DamageDice;
+
+                    var cantripBuilder = AbilityConfigurator.For(cantrip);
+
+
+                    cantripBuilder = cantripBuilder.AddContextRankConfig(new Kingmaker.UnitLogic.Mechanics.Components.ContextRankConfig()
+                    {
+                        m_Type = Kingmaker.Enums.AbilityRankType.DamageDice,
+                        m_BaseValueType = Kingmaker.UnitLogic.Mechanics.Components.ContextRankBaseValueType.CasterLevel,
+                        m_Progression = Kingmaker.UnitLogic.Mechanics.Components.ContextRankProgression.StartPlusDivStep,
+                        m_StepLevel = 2,
+                        m_StartLevel = 0,
+                        m_Max = 6
+                    }).AddContextRankConfig(new Kingmaker.UnitLogic.Mechanics.Components.ContextRankConfig()
+                    {
+                        m_Type = Kingmaker.Enums.AbilityRankType.DamageDiceAlternative,
+                        m_BaseValueType = Kingmaker.UnitLogic.Mechanics.Components.ContextRankBaseValueType.CasterLevel,
+                        m_Progression = Kingmaker.UnitLogic.Mechanics.Components.ContextRankProgression.AsIs,
+                        m_StepLevel = 0,
+                        m_StartLevel = 0,
+                        m_Max = 16
+                    });
+
+                }
+                else
+                {
+                    dmg.Value.DiceCountValue.ValueType = Kingmaker.UnitLogic.Mechanics.ContextValueType.Rank;
+                    dmg.Value.DiceCountValue.ValueRank = Kingmaker.Enums.AbilityRankType.DamageDice;
+                    spell.AddContextRankConfig(x =>
+                    {
+                        x.m_Type = Kingmaker.Enums.AbilityRankType.DamageDice;
+                        x.m_BaseValueType = ContextRankBaseValueType.CasterLevel;
+                        x.m_Progression = ContextRankProgression.OnePlusDiv2;
+                        x.m_StepLevel = 0;
+                        x.m_StartLevel = 0;
+                        x.m_UseMax = true;
+                        x.m_Max = 6;
+                    });
+                }
             }
-            else
+            catch(Exception ex)
             {
-                dmg.Value.DiceCountValue.ValueType = Kingmaker.UnitLogic.Mechanics.ContextValueType.Rank;
-                dmg.Value.DiceCountValue.ValueRank = Kingmaker.Enums.AbilityRankType.DamageDice;
+                Logging.GetLogger("PSC").Log("Exception editing " + cantrip.NameSafe() + ": " + ex.Message);
             }
             
-            spell.AddContextRankConfig(x =>
-            {
-                x.m_Type = Kingmaker.Enums.AbilityRankType.DamageDice;
-                x.m_BaseValueType = ContextRankBaseValueType.CasterLevel;
-                x.m_Progression = ContextRankProgression.OnePlusDiv2;
-                x.m_StepLevel = 0;
-                x.m_StartLevel = 0;
-                x.m_UseMax = true;
-                x.m_Max = 6;
-            });
+            
         }
     }
 

@@ -57,7 +57,7 @@ namespace PhoenixScalingCantrips.Spells
                     Type = DamageType.Energy,
                     Energy = damage
                 },
-                    value: ContextDice.Value(damage == DamageEnergyType.Sonic ? Kingmaker.RuleSystem.DiceType.D2 : Kingmaker.RuleSystem.DiceType.D3,
+                    value: ContextDice.Value(damage == DamageEnergyType.Sonic ? Kingmaker.RuleSystem.DiceType.D3 : Kingmaker.RuleSystem.DiceType.D4,
                     diceCount: new ContextValue() { ValueType = ContextValueType.Rank, ValueRank = Kingmaker.Enums.AbilityRankType.DamageDiceAlternative } ))
 
                 ,
@@ -100,11 +100,11 @@ namespace PhoenixScalingCantrips.Spells
                 }).AddContextRankConfig(new Kingmaker.UnitLogic.Mechanics.Components.ContextRankConfig()
                 {
                     m_Type = Kingmaker.Enums.AbilityRankType.DamageDiceAlternative,
-                    m_BaseValueType = Kingmaker.UnitLogic.Mechanics.Components.ContextRankBaseValueType.CasterLevel,
-                    m_Progression = Kingmaker.UnitLogic.Mechanics.Components.ContextRankProgression.AsIs,
-                    m_StepLevel = 0,
+                    m_BaseValueType = Kingmaker.UnitLogic.Mechanics.Components.ContextRankBaseValueType.ClassLevel,
+                    m_Progression = Kingmaker.UnitLogic.Mechanics.Components.ContextRankProgression.StartPlusDivStep,
+                    m_StepLevel = 2,
                     m_StartLevel = 0,
-                    m_Max = 16
+                    m_Max = 20
                 });
             }
             else
