@@ -21,23 +21,24 @@ namespace PhoenixScalingCantrips.Spells
             
             if (Settings.IsEnabled("addburningtouch"))
             {
-                AbilityConfigurator.For("BurningTouch").AddToSpellLists(0, SpellList.Magus, SpellList.Wizard);
+                AbilityConfigurator.For("BurningTouch").AddToSpellLists(0, SpellList.Magus, SpellList.Wizard).Configure();
             }
             if (Settings.IsEnabled("addlessercorrosivetouch"))
             {
-                AbilityConfigurator.For("LesserCorrosiveTouch").AddToSpellLists(0, SpellList.Magus, SpellList.Wizard);
+                AbilityConfigurator.For("LesserCorrosiveTouch").AddToSpellLists(0, SpellList.Magus, SpellList.Wizard).Configure();
             }
             if (Settings.IsEnabled("addfrostytouch"))
             {
-                AbilityConfigurator.For("FrostyTouch").AddToSpellLists(0, SpellList.Magus, SpellList.Wizard);
+                AbilityConfigurator.For("FrostyTouch").AddToSpellLists(0, SpellList.Magus, SpellList.Wizard).Configure();
             }
             if (Settings.IsEnabled("addlessershockinggrasp"))
             {
-                AbilityConfigurator.For("LesserShockingGrasp").AddToSpellLists(0, SpellList.Magus, SpellList.Wizard);
+                AbilityConfigurator.For("LesserShockingGrasp").AddToSpellLists(0, SpellList.Magus, SpellList.Wizard).Configure();
             }
             if (Settings.IsEnabled("joltformagus"))
             {
-                AbilityConfigurator.For("16e23c7a8ae53cc42a93066d19766404").AddToSpellLists(0, SpellList.Magus);
+                AbilityConfigurator.For("16e23c7a8ae53cc42a93066d19766404").AddToSpellLists(0, SpellList.Magus).Configure();
+                AbilityConfigurator.For("564c2ac83c7844beb1921e69ab159ac6").AddToSpellLists(0, SpellList.Magus).Configure();
             }
             if (Settings.IsEnabled("adddissonanttouch"))
             {
