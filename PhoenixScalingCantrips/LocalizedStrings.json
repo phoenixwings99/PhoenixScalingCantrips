@@ -79,16 +79,8 @@
     "enGB": "Adds Painful Note and Dissonant Touch to Arrowsong Minstrel. Requires Character Options Plus"
   },
   {
-    "Key": "Firebolt.Name",
-    "enGB": "Firebolt"
-  },
-  {
-    "Key": "Firebolt.Desc",
-    "enGB": "You cause a bolt of fire to strike the target with a successful ranged {g|Encyclopedia:TouchAttack}touch attack{/g}. The {g|Encyclopedia:Spell}spell{/g} deals {g|Encyclopedia:Dice}1d3{/g} points of {g|Encyclopedia:Energy_Damage}fire damage{/g}"
-  },
-  {
-    "Key": "Firebolt.Desc2",
-    "enGB": "You cause a bolt of fire to strike the target with a successful ranged {g|Encyclopedia:TouchAttack}touch attack{/g}. The {g|Encyclopedia:Spell}spell{/g} deals {g|Encyclopedia:Dice}1d3{/g} points of {g|Encyclopedia:Energy_Damage}fire damage{/g}, plus another die per two caster levels past first (maximum 6d3)."
+    "Key": "Ignition.Desc2",
+    "enGB": "You cause a spark of fire to strike the target with a successful ranged {g|Encyclopedia:TouchAttack}touch attack{/g}. The {g|Encyclopedia:Spell}spell{/g} deals {g|Encyclopedia:Dice}1d3{/g} points of {g|Encyclopedia:Energy_Damage}fire damage{/g}, plus another die per two caster levels past first (maximum 6d3)."
   },
   {
     "Key": "BurningTouch.Name",

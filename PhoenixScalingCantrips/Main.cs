@@ -78,8 +78,11 @@ public static class Main
                 Logger.Log("Building Settings");
                 // Then settings
                 Settings.Init();
+                Logger.Log("Creating spells");
                 CreateSpells();
+                Logger.Log("Scaling old spells");
                 ScaleSpells();
+                Logger.Log("Proliferating spells");
                 ProliferateSpells();
 
 

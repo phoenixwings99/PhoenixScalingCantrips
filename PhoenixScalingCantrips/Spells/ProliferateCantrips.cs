@@ -18,41 +18,38 @@ namespace PhoenixScalingCantrips.Spells
         {
 
 
-            if(Settings.IsEnabled("AddFirebolt"))
-            {
-                AbilityConfigurator.For("Firebolt").AddToSpellLists(0, SpellList.Magus, SpellList.Wizard);
-            }
-            if (Settings.IsEnabled("AddBurningTouch"))
+            
+            if (Settings.IsEnabled("addburningtouch"))
             {
                 AbilityConfigurator.For("BurningTouch").AddToSpellLists(0, SpellList.Magus, SpellList.Wizard);
             }
-            if (Settings.IsEnabled("AddLesserCorrosiveTouch"))
+            if (Settings.IsEnabled("addlessercorrosivetouch"))
             {
                 AbilityConfigurator.For("LesserCorrosiveTouch").AddToSpellLists(0, SpellList.Magus, SpellList.Wizard);
             }
-            if (Settings.IsEnabled("AddFrostyTouch"))
+            if (Settings.IsEnabled("addfrostytouch"))
             {
                 AbilityConfigurator.For("FrostyTouch").AddToSpellLists(0, SpellList.Magus, SpellList.Wizard);
             }
-            if (Settings.IsEnabled("AddLesserShockingGrasp"))
+            if (Settings.IsEnabled("addlessershockinggrasp"))
             {
                 AbilityConfigurator.For("LesserShockingGrasp").AddToSpellLists(0, SpellList.Magus, SpellList.Wizard);
             }
-            if (Settings.IsEnabled("JoltForMagus"))
+            if (Settings.IsEnabled("joltformagus"))
             {
                 AbilityConfigurator.For("16e23c7a8ae53cc42a93066d19766404").AddToSpellLists(0, SpellList.Magus);
             }
-            if (Settings.IsEnabled("AddDissonantTouch"))
+            if (Settings.IsEnabled("adddissonanttouch"))
             {
-                if (Settings.IsCharOpPlusEnabled() && Settings.IsEnabled("SonicToArrowsong"))
+                if (Settings.IsCharOpPlusEnabled() && Settings.IsEnabled("sonictoarrowsong"))
                 {
                     FeatureConfigurator.For("23d3d21793cc4ae6a034860c89561253").AddKnownSpell(archetype: "b704d577abe54873b9228f56c2319b54", characterClass: "772c83a25e2268e448e841dcd548235f", spell: "PainfulNote", 0).Configure(delayed: true);
 
                 }
             }
-            if (Settings.IsEnabled("AddPainfulNote"))
+            if (Settings.IsEnabled("addpainfulnote"))
             {
-                if (Settings.IsCharOpPlusEnabled() && Settings.IsEnabled("SonicToArrowsong"))
+                if (Settings.IsCharOpPlusEnabled() && Settings.IsEnabled("sonictoarrowsong"))
                 {
                     FeatureConfigurator.For("23d3d21793cc4ae6a034860c89561253").AddKnownSpell(archetype: "b704d577abe54873b9228f56c2319b54", characterClass: "772c83a25e2268e448e841dcd548235f", spell: "DissonantTouch", 0).Configure(delayed: true);
 

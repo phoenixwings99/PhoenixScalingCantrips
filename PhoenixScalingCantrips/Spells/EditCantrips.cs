@@ -5,6 +5,7 @@ using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Components;
 using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.UnitLogic.Mechanics.Components;
+using Microsoft.Build.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,7 @@ namespace PhoenixScalingCantrips.Spells
         {
             if (Settings.IsEnabled("addscaling"))
             {
+                
                 var RayOfFrost = BlueprintTool.GetRef<BlueprintAbilityReference>("9af2ab69df6538f4793b2f9c3cc85603");
                 EditCantrip(RayOfFrost);
                 AbilityConfigurator.For(RayOfFrost).SetDescription("RayOfFrost.Desc2").Configure();
@@ -44,6 +46,7 @@ namespace PhoenixScalingCantrips.Spells
 
         private static void EditCantrip(BlueprintAbilityReference cantrip)
         {
+            Logging.GetLogger("PSC").Log("Scaling " + cantrip.NameSafe());
             var spell = cantrip.Get();
 
             AbilityEffectStickyTouch sticky = spell.GetComponent<AbilityEffectStickyTouch>();
@@ -53,8 +56,16 @@ namespace PhoenixScalingCantrips.Spells
             }
 
             var dmg = spell.GetComponent<AbilityEffectRunAction>().Actions.Actions.FirstOrDefault(x => x is ContextActionDealDamage) as ContextActionDealDamage;
-            dmg.Value.DiceCountValue.ValueType = Kingmaker.UnitLogic.Mechanics.ContextValueType.Rank;
-            dmg.Value.DiceCountValue.ValueRank = Kingmaker.Enums.AbilityRankType.DamageDice;
+            if ( (dmg is null))
+            {
+                Logging.GetLogger("PSC").Log("DMG is null for " + cantrip.NameSafe());
+            }
+            else
+            {
+                dmg.Value.DiceCountValue.ValueType = Kingmaker.UnitLogic.Mechanics.ContextValueType.Rank;
+                dmg.Value.DiceCountValue.ValueRank = Kingmaker.Enums.AbilityRankType.DamageDice;
+            }
+            
             spell.AddContextRankConfig(x =>
             {
                 x.m_Type = Kingmaker.Enums.AbilityRankType.DamageDice;

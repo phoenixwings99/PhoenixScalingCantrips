@@ -49,7 +49,6 @@ namespace PhoenixScalingCantrips
                 .AddDefaultButton(OnDefaultsApplied);
             
             settings.AddToggle(new Toggle("psc.settings.addscaling", true, GetString("EnableScaling")));
-            settings.AddToggle(new Toggle("psc.settings.addfirebolt", true, GetString("AddFirebolt")));
             settings.AddToggle(new Toggle("psc.settings.addburningtouch", true, GetString("AddBurningTouch")));
             settings.AddToggle(new Toggle("psc.settings.addfrostytouch", true, GetString("AddFrostyTouch")));
             settings.AddToggle(new Toggle("psc.settings.addlessershockinggrasp", true, GetString("AddLesserShockingGrasp")));
