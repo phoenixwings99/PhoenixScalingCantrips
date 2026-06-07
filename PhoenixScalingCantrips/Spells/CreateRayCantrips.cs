@@ -26,7 +26,7 @@ namespace PhoenixScalingCantrips.Spells
             string fireboltGUID = "69E2769505B34A548E0D9A5F21E3D5B4";
             Sprite fireboltIcon = BlueprintTool.Get<BlueprintAbility>("42a65895ba0cb3a42b6019039dd2bff1").Icon;//MoltenOrb
             string scorchingProj = "8cc159ce94d29fe46a94b80ce549161f";//Scorching ray projectile
-            BlueprintAbility bolt = CreateRay("PainfulNote", fireboltGUID, DamageEnergyType.Sonic, scorchingProj, fireboltIcon);
+            BlueprintAbility bolt = CreateRay("Firebolt", fireboltGUID, DamageEnergyType.Sonic, scorchingProj, fireboltIcon);
         }
 
         public static void CreateDissonantNote()
@@ -60,11 +60,11 @@ namespace PhoenixScalingCantrips.Spells
                 Energy = damage
             },
                 value: ContextDice.Value(damage == DamageEnergyType.Sonic ? Kingmaker.RuleSystem.DiceType.D2 : Kingmaker.RuleSystem.DiceType.D3,
-                diceCount: Settings.IsEnabled("EnableScaling") ? new ContextValue() { ValueType = ContextValueType.Rank, ValueRank = Kingmaker.Enums.AbilityRankType.DamageDice } : ContextValues.Constant(1), bonus: ContextValues.Constant(0)));
+                diceCount: Settings.IsEnabled("addscaling") ? new ContextValue() { ValueType = ContextValueType.Rank, ValueRank = Kingmaker.Enums.AbilityRankType.DamageDice } : ContextValues.Constant(1), bonus: ContextValues.Constant(0)));
 
             AbilityConfigurator cantrip = AbilityConfigurator.NewSpell(systemName, guid, school, false, descriptor)
                 .SetDisplayName(systemName + ".Name")
-                .SetDescription(systemName + (Settings.IsEnabled("EnableScaling") ? ".Desc" : ".Desc2"))
+                .SetDescription(systemName + (Settings.IsEnabled("addscaling") ? ".Desc" : ".Desc2"))
                 .AddCantripComponent()
                 .SetIcon(icon)
                 .AddAbilityDeliverProjectile(needAttackRoll: true, projectiles: new List<Blueprint<BlueprintProjectileReference>>() { projectile }, weapon: "f6ef95b1f7bb52b408a5b345a330ffe8", lineWidth: new(5f))
@@ -75,7 +75,7 @@ namespace PhoenixScalingCantrips.Spells
                 .SetEffectOnEnemy(AbilityEffectOnUnit.Harmful)
                 .SetActionType(Kingmaker.UnitLogic.Commands.Base.UnitCommand.CommandType.Standard)
                 .SetSpellResistance(true);
-            if (Settings.IsEnabled("EnableScaling"))
+            if (Settings.IsEnabled("addscaling"))
             {
                 cantrip = cantrip.AddContextRankConfig(new Kingmaker.UnitLogic.Mechanics.Components.ContextRankConfig()
                 {

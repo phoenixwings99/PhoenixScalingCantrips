@@ -18,7 +18,7 @@ namespace PhoenixScalingCantrips.Spells
     {
         public static void Edit()
         {
-            if (Settings.IsEnabled("EnableScaling"))
+            if (Settings.IsEnabled("addscaling"))
             {
                 var RayOfFrost = BlueprintTool.GetRef<BlueprintAbilityReference>("9af2ab69df6538f4793b2f9c3cc85603");
                 EditCantrip(RayOfFrost);

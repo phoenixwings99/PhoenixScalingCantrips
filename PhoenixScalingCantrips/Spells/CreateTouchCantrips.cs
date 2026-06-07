@@ -100,11 +100,11 @@ namespace PhoenixScalingCantrips.Spells
                 Energy = damage
             },
                 value: ContextDice.Value(damage == DamageEnergyType.Sonic ? Kingmaker.RuleSystem.DiceType.D2 : Kingmaker.RuleSystem.DiceType.D3,
-                diceCount: Settings.IsEnabled("EnableScaling") ? new ContextValue() { ValueType = ContextValueType.Rank, ValueRank = Kingmaker.Enums.AbilityRankType.DamageDice } : ContextValues.Constant(1), bonus: ContextValues.Constant(0)));
+                diceCount: Settings.IsEnabled("addscaling") ? new ContextValue() { ValueType = ContextValueType.Rank, ValueRank = Kingmaker.Enums.AbilityRankType.DamageDice } : ContextValues.Constant(1), bonus: ContextValues.Constant(0)));
 
             AbilityConfigurator touch = AbilityConfigurator.NewSpell(systemName, touchGuid, school, false, descriptor)
                 .SetDisplayName(systemName + ".Name")
-                .SetDescription(systemName + (Settings.IsEnabled("EnableScaling") ? ".Desc" : ".Desc2"))
+                .SetDescription(systemName + (Settings.IsEnabled("addscaling") ? ".Desc" : ".Desc2"))
                 .AddCantripComponent()
                 .SetIcon(icon)
                 .AddAbilityEffectRunAction(action)
@@ -122,7 +122,7 @@ namespace PhoenixScalingCantrips.Spells
 
             var cantrip = AbilityConfigurator.NewSpell(systemName + "Cast", spellGuid, school, false, descriptor)
                 .SetDisplayName(systemName + ".Name")
-                .SetDescription(systemName + (Settings.IsEnabled("EnableScaling") ? ".Desc" : ".Desc2"))
+                .SetDescription(systemName + (Settings.IsEnabled("addscaling") ? ".Desc" : ".Desc2"))
                 .AddCantripComponent()
                 .SetIcon(icon)
                 .AddAbilityEffectStickyTouch(touchDeliveryAbility: systemName)
