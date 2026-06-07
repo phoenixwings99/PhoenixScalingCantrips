@@ -64,7 +64,7 @@ namespace PhoenixScalingCantrips.Spells
             string castGUID = "9B405733B7B842C0A06CE14DC08030D2";
             string touchGUID = "2FD3A8231D554CFAB08A88865DC1A97D";
             var icon = BlueprintTool.Get<BlueprintUnitFact>("ab395d2335d3f384e99dddee8562978f").Icon;
-            var cantrip = CreateTouchCantrip("LesserCorrosiveTouch", castGUID, touchGUID, DamageEnergyType.Electricity, icon, touchprefabasset: "3ab291fca61cf3b4da311da82340ee9e");
+            var cantrip = CreateTouchCantrip("LesserShockingGrasp", castGUID, touchGUID, DamageEnergyType.Electricity, icon, touchprefabasset: "3ab291fca61cf3b4da311da82340ee9e");
             
 
         }
@@ -75,7 +75,7 @@ namespace PhoenixScalingCantrips.Spells
             var dissonantTouchIcon = BlueprintTool.Get<BlueprintActivatableAbility>("287e0c88af08f3e4ba4aca52566f33a7").Icon;
 
             string dissonantTouch = "F1863B76AE55418C9EABA6C232BED44C";
-            var cantrip = CreateTouchCantrip("LesserCorrosiveTouch", dissonantTouchCast, dissonantTouch, DamageEnergyType.Electricity, dissonantTouchIcon);
+            var cantrip = CreateTouchCantrip("DissonantTouch", dissonantTouchCast, dissonantTouch, DamageEnergyType.Electricity, dissonantTouchIcon);
 
         }
 
