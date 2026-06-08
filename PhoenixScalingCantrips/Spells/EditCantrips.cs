@@ -75,8 +75,8 @@ namespace PhoenixScalingCantrips.Spells
                 x.m_UseMax = true;
                 x.m_Max = 10;
             });
-            BuffConfigurator.For("d3a852385ba4cd740992d1970170301a").SetDescription("Virtue.Desc2").Configure();
-            AbilityConfigurator.For("a13ad2502d9e4904082868eb71efb0c5").SetDescription("Virtue.Desc2").Configure();
+            BuffConfigurator.For("a13ad2502d9e4904082868eb71efb0c5").SetDescription("Virtue.Desc2").Configure();
+            AbilityConfigurator.For("d3a852385ba4cd740992d1970170301a").SetDescription("Virtue.Desc2").Configure();
         }
 
         private static void EditCantrip(BlueprintAbilityReference cantrip)
