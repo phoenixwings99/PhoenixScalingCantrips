@@ -79,6 +79,34 @@
     "enGB": "Adds Painful Note and Dissonant Touch to Arrowsong Minstrel. Requires Character Options Plus"
   },
   {
+    "Key": "PSC.Settings.ProliferateToShaman",
+    "enGB": "Proliferate To Shaman"
+  },
+  {
+    "Key": "PSC.Settings.ProliferateToShaman.Desc",
+    "enGB": "Add cantrips to elemental Shaman Spirits"
+  },
+  {
+    "Key": "PSC.Settings.ProliferateToOracle",
+    "enGB": "Proliferate To Oracle"
+  },
+  {
+    "Key": "PSC.Settings.ProliferateToOracle.Desc",
+    "enGB": "Add cantrips to single-element Oracle Mysteries, and Blackened Curse"
+  },
+  {
+    "Key": "PSC.Settings.ProliferateToWitch",
+    "enGB": "Proliferate To Witch"
+  },
+  {
+    "Key": "PSC.Settings.ProliferateToWitch.Desc",
+    "enGB": "Add cantrips to element-themed witch patrons, and Blackened Curse"
+  },
+  {
+    "Key": "PSC.Settings.ProliferateToWinterWitch",
+    "enGB": "Proliferate To Winter Witch"
+  },
+  {
     "Key": "Ignition.Desc2",
     "enGB": "You cause a spark of fire to strike the target with a successful ranged {g|Encyclopedia:TouchAttack}touch attack{/g}. The {g|Encyclopedia:Spell}spell{/g} deals {g|Encyclopedia:Dice}1d3{/g} points of {g|Encyclopedia:Energy_Damage}fire damage{/g}, plus another die per two caster levels past first (maximum 6d3)."
   },

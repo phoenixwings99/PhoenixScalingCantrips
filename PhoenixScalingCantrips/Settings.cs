@@ -59,6 +59,10 @@ namespace PhoenixScalingCantrips
             settings.AddToggle(new Toggle("psc.settings.adddissonanttouch", true, GetString("AddDissonantTouch")));
             settings.AddToggle(new Toggle("psc.settings.joltformagus", true, GetString("JoltForMagus")));
             settings.AddToggle(new Toggle("psc.settings.sonictoarrowsong", true, GetString("SonicToArrowsong")));
+            settings.AddToggle(new Toggle("psc.settings.proliferatetoshaman", true, GetString("ProliferateToShaman")));
+            settings.AddToggle(new Toggle("psc.settings.proliferatetowitch", true, GetString("ProliferateToWitch")));
+            settings.AddToggle(new Toggle("psc.settings.proliferatetowinterwitch", true, GetString("ProliferateToWinterWitch")));
+            settings.AddToggle(new Toggle("psc.settings.proliferatetooracle", true, GetString("ProliferateToOracle")));
            
            
             

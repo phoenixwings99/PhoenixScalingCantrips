@@ -1,16 +1,19 @@
 ﻿using BlueprintCore.Actions.Builder;
 using BlueprintCore.Actions.Builder.ContextEx;
 using BlueprintCore.Blueprints.CustomConfigurators.UnitLogic.Abilities;
+using BlueprintCore.Blueprints.CustomConfigurators.UnitLogic.Buffs;
 using BlueprintCore.Conditions.Builder;
 using BlueprintCore.Conditions.Builder.BasicEx;
 using BlueprintCore.Utils;
 using BlueprintCore.Utils.Types;
 using Kingmaker.Blueprints;
 using Kingmaker.Designers.EventConditionActionSystem.Actions;
+using Kingmaker.Designers.Mechanics.Buffs;
 using Kingmaker.Enums.Damage;
 using Kingmaker.RuleSystem.Rules.Damage;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Abilities.Components;
+using Kingmaker.UnitLogic.Buffs.Blueprints;
 using Kingmaker.UnitLogic.Mechanics;
 using Kingmaker.UnitLogic.Mechanics.Actions;
 using Kingmaker.UnitLogic.Mechanics.Components;
@@ -51,7 +54,29 @@ namespace PhoenixScalingCantrips.Spells
                 var DisruptUndead = BlueprintTool.GetRef<BlueprintAbilityReference>("652739779aa05504a9ad5db1db6d02ae");
                 EditCantrip(DisruptUndead);
                 AbilityConfigurator.For(DisruptUndead).SetDescription("DisruptUndead.Desc2").Configure();
+
+                EditVirtue();
             }
+        }
+
+        private static void EditVirtue()
+        {
+            var buff = BlueprintTool.Get<BlueprintBuff>("a13ad2502d9e4904082868eb71efb0c5");
+            var temphp = buff.GetComponent<TemporaryHitPointsFromAbilityValue>();
+            temphp.Value.ValueType = Kingmaker.UnitLogic.Mechanics.ContextValueType.Rank;
+            temphp.Value.ValueRank = Kingmaker.Enums.AbilityRankType.StatBonus;
+            buff.AddContextRankConfig(x =>
+            {
+                x.m_Type = Kingmaker.Enums.AbilityRankType.StatBonus;
+                x.m_BaseValueType = ContextRankBaseValueType.CasterLevel;
+                x.m_Progression = ContextRankProgression.OnePlusDiv2;
+                x.m_UseMin = true;
+                x.m_Min = 1;
+                x.m_UseMax = true;
+                x.m_Max = 10;
+            });
+            BuffConfigurator.For("d3a852385ba4cd740992d1970170301a").SetDescription("Virtue.Desc2").Configure();
+            AbilityConfigurator.For("a13ad2502d9e4904082868eb71efb0c5").SetDescription("Virtue.Desc2").Configure();
         }
 
         private static void EditCantrip(BlueprintAbilityReference cantrip)
