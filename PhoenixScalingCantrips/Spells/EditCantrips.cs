@@ -72,7 +72,7 @@ namespace PhoenixScalingCantrips.Spells
         {
             BlueprintBuff buff = BlueprintTool.Get<BlueprintBuff>("a13ad2502d9e4904082868eb71efb0c5");
             TemporaryHitPointsFromAbilityValue temphp = buff.GetComponent<TemporaryHitPointsFromAbilityValue>();
-            temphp.Value.ValueType = Kingmaker.UnitLogic.Mechanics.ContextValueType.Rank;
+            temphp.Value.ValueType = ContextValueType.Rank;
             temphp.Value.ValueRank = Kingmaker.Enums.AbilityRankType.StatBonus;
             BuffConfigurator.For(buff).AddContextRankConfig(new ContextRankConfig()
             {
@@ -121,19 +121,19 @@ namespace PhoenixScalingCantrips.Spells
                     AbilityConfigurator cantripBuilder = AbilityConfigurator.For(cantrip);
 
 
-                    cantripBuilder.AddContextRankConfig(new Kingmaker.UnitLogic.Mechanics.Components.ContextRankConfig()
+                    cantripBuilder.AddContextRankConfig(new ContextRankConfig()
                     {
                         m_Type = Kingmaker.Enums.AbilityRankType.DamageDice,
-                        m_BaseValueType = Kingmaker.UnitLogic.Mechanics.Components.ContextRankBaseValueType.CasterLevel,
-                        m_Progression = Kingmaker.UnitLogic.Mechanics.Components.ContextRankProgression.OnePlusDiv2,
+                        m_BaseValueType = ContextRankBaseValueType.CasterLevel,
+                        m_Progression = ContextRankProgression.OnePlusDiv2,
                         m_StepLevel = 0,
                         m_StartLevel = 0,
                         m_Max = 6
-                    }).AddContextRankConfig(new Kingmaker.UnitLogic.Mechanics.Components.ContextRankConfig()
+                    }).AddContextRankConfig(new ContextRankConfig()
                     {
                         m_Type = Kingmaker.Enums.AbilityRankType.DamageDiceAlternative,
-                        m_BaseValueType = Kingmaker.UnitLogic.Mechanics.Components.ContextRankBaseValueType.CasterLevel,
-                        m_Progression = Kingmaker.UnitLogic.Mechanics.Components.ContextRankProgression.OnePlusDiv2,
+                        m_BaseValueType = ContextRankBaseValueType.CasterLevel,
+                        m_Progression = ContextRankProgression.OnePlusDiv2,
                         m_StepLevel = 0,
                         m_StartLevel = 0,
                         m_Max = 10
@@ -142,8 +142,8 @@ namespace PhoenixScalingCantrips.Spells
                 }
                 else
                 {
-                    Logger.Log("Editing ContextActionDealDamage in root of action for " + spell.NameSafe());
-                    dmg.Value.DiceCountValue.ValueType = Kingmaker.UnitLogic.Mechanics.ContextValueType.Rank;
+                   
+                    dmg.Value.DiceCountValue.ValueType = ContextValueType.Rank;
                     dmg.Value.DiceCountValue.ValueRank = Kingmaker.Enums.AbilityRankType.DamageDice;
                     AbilityConfigurator.For(cantrip).AddContextRankConfig(new ContextRankConfig()
                     {
