@@ -19,12 +19,13 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using static Kingmaker.Kingdom.Settlements.SettlementGridTopology;
+using static Kingmaker.UnitLogic.Mechanics.Properties.UnitPropertyComponent;
 
 namespace PhoenixScalingCantrips.Spells
 {
     internal class CreateTouchCantrips
     {
-
+        private static readonly Logging.Logger Logger = Logging.GetLogger(nameof(CreateTouchCantrips));
         public static void CreateBurningTouch()
         {
             string burningTouchGUID = "25C60A4F408C4B2D97E4B9BC784E7F2F";
@@ -117,7 +118,18 @@ namespace PhoenixScalingCantrips.Spells
                 .SetAnimation(Kingmaker.Visual.Animation.Kingmaker.Actions.UnitAnimationActionCastSpell.CastAnimationStyle.Touch)
                 .SetActionType(Kingmaker.UnitLogic.Commands.Base.UnitCommand.CommandType.Standard);
             if (touchprefabasset != null)
-                touch.AddAbilitySpawnFx(AbilitySpawnFxAnchor.SelectedTarget, delay: 0.0f, orientationAnchor: AbilitySpawnFxAnchor.None, orientationMode: AbilitySpawnFxOrientation.Copy, weaponTarget: AbilitySpawnFxWeaponTarget.None, prefabLink: touchprefabasset);
+                touch = touch.AddAbilitySpawnFx(AbilitySpawnFxAnchor.SelectedTarget, delay: 0.0f, orientationAnchor: AbilitySpawnFxAnchor.None, orientationMode: AbilitySpawnFxOrientation.Copy, weaponTarget: AbilitySpawnFxWeaponTarget.None, prefabLink: touchprefabasset);
+            if (Settings.IsEnabled("addscaling"))
+                touch = touch.AddContextRankConfig(new Kingmaker.UnitLogic.Mechanics.Components.ContextRankConfig()
+                {
+                    m_Type = Kingmaker.Enums.AbilityRankType.DamageDice,
+                    m_BaseValueType = Kingmaker.UnitLogic.Mechanics.Components.ContextRankBaseValueType.CasterLevel,
+                    m_Progression = Kingmaker.UnitLogic.Mechanics.Components.ContextRankProgression.StartPlusDivStep,
+                    m_StepLevel = 2,
+                    m_StartLevel = 0,
+                    m_Max = 6
+
+                });
            var touchDone = touch.Configure();
 
             var cantrip = AbilityConfigurator.NewSpell(systemName + "Cast", spellGuid, school, false, descriptor)

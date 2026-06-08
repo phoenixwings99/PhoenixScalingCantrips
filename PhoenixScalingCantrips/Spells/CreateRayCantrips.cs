@@ -23,8 +23,8 @@ namespace PhoenixScalingCantrips.Spells
 {
     internal class CreateRayCantrips
     {
-        
 
+        private static readonly Logging.Logger Logger = Logging.GetLogger(nameof(CreateRayCantrips));
         public static void CreateDissonantNote()
         {
             string painfulNoteGUID = "EA38928D3CF342CAB80A335D2AE44D72";
@@ -37,7 +37,7 @@ namespace PhoenixScalingCantrips.Spells
 
         private static BlueprintAbility CreateRay(string systemName, string guid, DamageEnergyType damage, Blueprint<BlueprintProjectileReference> projectile, Sprite icon, SpellSchool school = SpellSchool.Evocation)
         {
-            Logging.GetLogger("PSC").Log("Creating " + systemName);
+           Logger.Log("Creating " + systemName);
             SpellDescriptor[] descriptor = new SpellDescriptor[] { };
 
             if (damage == DamageEnergyType.Fire)
@@ -65,10 +65,10 @@ namespace PhoenixScalingCantrips.Spells
                 {
                     Type = DamageType.Energy,
                     Energy = damage
-                },
+                }, 
                     value: ContextDice.Value(damage == DamageEnergyType.Sonic ? Kingmaker.RuleSystem.DiceType.D2 : Kingmaker.RuleSystem.DiceType.D3,
-                    diceCount: Settings.IsEnabled("addscaling") ? new ContextValue() { ValueType = ContextValueType.Rank, ValueRank = Kingmaker.Enums.AbilityRankType.DamageDice } : ContextValues.Constant(1), bonus: ContextValues.Constant(0)))
-
+                        diceCount: Settings.IsEnabled("addscaling") ? new ContextValue() { ValueType = ContextValueType.Rank , ValueRank = Kingmaker.Enums.AbilityRankType.DamageDice } : ContextValues.Constant(1), bonus: ContextValues.Constant(0)))
+                    
                 
                 );
 
@@ -89,22 +89,23 @@ namespace PhoenixScalingCantrips.Spells
                 .SetSpellResistance(true);
             if (Settings.IsEnabled("addscaling"))
             {
+                Logger.Log("Adding scaling to " + systemName);
                 cantrip = cantrip.AddContextRankConfig(new Kingmaker.UnitLogic.Mechanics.Components.ContextRankConfig()
                 {
                     m_Type = Kingmaker.Enums.AbilityRankType.DamageDice,
                     m_BaseValueType = Kingmaker.UnitLogic.Mechanics.Components.ContextRankBaseValueType.CasterLevel,
-                    m_Progression = Kingmaker.UnitLogic.Mechanics.Components.ContextRankProgression.StartPlusDivStep,
-                    m_StepLevel = 2,
-                    m_StartLevel = 0,
+                    m_Progression = Kingmaker.UnitLogic.Mechanics.Components.ContextRankProgression.OnePlusDiv2,
+                    m_StepLevel = 0,
+                    m_StartLevel = 1,
                     m_Max = 6
                 }).AddContextRankConfig(new Kingmaker.UnitLogic.Mechanics.Components.ContextRankConfig()
                 {
                     m_Type = Kingmaker.Enums.AbilityRankType.DamageDiceAlternative,
                     m_BaseValueType = Kingmaker.UnitLogic.Mechanics.Components.ContextRankBaseValueType.ClassLevel,
-                    m_Progression = Kingmaker.UnitLogic.Mechanics.Components.ContextRankProgression.StartPlusDivStep,
-                    m_StepLevel = 2,
-                    m_StartLevel = 0,
-                    m_Max = 20
+                    m_Progression = Kingmaker.UnitLogic.Mechanics.Components.ContextRankProgression.OnePlusDiv2,
+                    m_StepLevel = 0,
+                    m_StartLevel = 1,
+                    m_Max = 10
                 });
             }
             else
@@ -113,10 +114,10 @@ namespace PhoenixScalingCantrips.Spells
                 {
                     m_Type = Kingmaker.Enums.AbilityRankType.DamageDice,
                     m_BaseValueType = Kingmaker.UnitLogic.Mechanics.Components.ContextRankBaseValueType.ClassLevel,
-                    m_Progression = Kingmaker.UnitLogic.Mechanics.Components.ContextRankProgression.StartPlusDivStep,
-                    m_StepLevel = 2,
-                    m_StartLevel = 0,
-                    m_Max = 20,
+                    m_Progression = Kingmaker.UnitLogic.Mechanics.Components.ContextRankProgression.OnePlusDiv2,
+                    m_StepLevel = 0,
+                    m_StartLevel = 1,
+                    m_Max = 10,
                     m_Class = new[] {BlueprintTool.GetRef<BlueprintCharacterClassReference>("1b9873f1e7bfe5449bc84d03e9c8e3cc"), BlueprintTool.GetRef<BlueprintCharacterClassReference>("eb24ca44debf6714aabe1af1fd905a07") }
 
                 });

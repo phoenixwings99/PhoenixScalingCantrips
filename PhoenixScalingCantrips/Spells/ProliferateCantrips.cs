@@ -38,6 +38,9 @@ namespace PhoenixScalingCantrips.Spells
                 if (Settings.IsEnabled("proliferatetooracle"))
                 {
                     FeatureConfigurator.For("3b68909df737cd4458509d7f3a9c3706").AddKnownSpell(characterClass: "20ce9bf8af32bee4c8557a045ab499b1", spell: "BurningTouch", spellLevel: 0).Configure();
+                    FeatureConfigurator.For("eac5d0fc2b143c247a42f790230eb778").AddKnownSpell(characterClass: "20ce9bf8af32bee4c8557a045ab499b1", spell: "BurningTouch", spellLevel: 0).Configure();
+                    FeatureConfigurator.For("804e1560f21c95b43a45a9825336bd19").AddKnownSpell(characterClass: "20ce9bf8af32bee4c8557a045ab499b1", spell: "BurningTouch", spellLevel: 0).Configure();
+                    
                 }
             }
             if (Settings.IsEnabled("addlessercorrosivetouch"))
@@ -51,6 +54,8 @@ namespace PhoenixScalingCantrips.Spells
                 if (Settings.IsEnabled("proliferatetooracle"))
                 {
                     FeatureConfigurator.For("7bb4bb3e7fd26f34e8ca035a27e03e85").AddKnownSpell(characterClass: "20ce9bf8af32bee4c8557a045ab499b1", spell: "LesserCorrosiveTouch", spellLevel: 0).Configure();
+                    FeatureConfigurator.For("09106dcc03321154f955e2d0296a082e").AddKnownSpell(characterClass: "20ce9bf8af32bee4c8557a045ab499b1", spell: "LesserCorrosiveTouch", spellLevel: 0).Configure();
+                    FeatureConfigurator.For("2127c37ccc7986e4083665552d6ecd5c").AddKnownSpell(characterClass: "20ce9bf8af32bee4c8557a045ab499b1", spell: "LesserCorrosiveTouch", spellLevel: 0).Configure();
                 }
                
             }
@@ -65,6 +70,8 @@ namespace PhoenixScalingCantrips.Spells
                 if (Settings.IsEnabled("proliferatetooracle"))
                 {
                     FeatureConfigurator.For("e2f8bd7c45dfb954c8c42b168505c783").AddKnownSpell(characterClass: "20ce9bf8af32bee4c8557a045ab499b1", spell: "FrostyTouch", spellLevel: 0).Configure();
+                    FeatureConfigurator.For("d91dcec40f768ea47b45bb4c4b2af40d").AddKnownSpell(characterClass: "20ce9bf8af32bee4c8557a045ab499b1", spell: "FrostyTouch", spellLevel: 0).Configure();
+                    FeatureConfigurator.For("1267082c536549c4c86f0725b6eea627").AddKnownSpell(characterClass: "20ce9bf8af32bee4c8557a045ab499b1", spell: "FrostyTouch", spellLevel: 0).Configure();
                 }
                 //Frosty Touch to Winter (modded)
             }
@@ -79,6 +86,8 @@ namespace PhoenixScalingCantrips.Spells
                 if (Settings.IsEnabled("proliferatetooracle"))
                 {
                     FeatureConfigurator.For("7c1fdd831af747b47bb2cce0051f309b").AddKnownSpell(characterClass: "20ce9bf8af32bee4c8557a045ab499b1", spell: "LesserShockingGrasp", spellLevel: 0).Configure();
+                    FeatureConfigurator.For("4fb980ffe85793b4194b11d3adb70d9e").AddKnownSpell(characterClass: "20ce9bf8af32bee4c8557a045ab499b1", spell: "LesserShockingGrasp", spellLevel: 0).Configure();
+                    FeatureConfigurator.For("3812dcb2fe59ecd449285391db677edc").AddKnownSpell(characterClass: "20ce9bf8af32bee4c8557a045ab499b1", spell: "LesserShockingGrasp", spellLevel: 0).Configure();
                 }
             }
             if (Settings.IsEnabled("joltformagus"))
@@ -116,9 +125,17 @@ namespace PhoenixScalingCantrips.Spells
                 FeatureConfigurator.For("0b6eeed955daedd4896ef104cfc2afb9").AddKnownSpell(characterClass: "20ce9bf8af32bee4c8557a045ab499b1", spell: "Ignition", spellLevel: 0).Configure();
                 FeatureConfigurator.For("0b6eeed955daedd4896ef104cfc2afb9").AddKnownSpell(characterClass: "1b9873f1e7bfe5449bc84d03e9c8e3cc", archetype: "c5f6e53e71059fb4d802ce81a277a12d", spell: "Ignition", spellLevel: 0).Configure();
                 FeatureConfigurator.For("3b68909df737cd4458509d7f3a9c3706").AddKnownSpell(characterClass: "20ce9bf8af32bee4c8557a045ab499b1", spell: "Ignition", spellLevel: 0).Configure();
+                FeatureConfigurator.For("eac5d0fc2b143c247a42f790230eb778").AddKnownSpell(characterClass: "20ce9bf8af32bee4c8557a045ab499b1", spell: "Ignition", spellLevel: 0).Configure();
+                FeatureConfigurator.For("804e1560f21c95b43a45a9825336bd19").AddKnownSpell(characterClass: "20ce9bf8af32bee4c8557a045ab499b1", spell: "Ignition", spellLevel: 0).Configure();
                 FeatureConfigurator.For("7bb4bb3e7fd26f34e8ca035a27e03e85").AddKnownSpell(characterClass: "20ce9bf8af32bee4c8557a045ab499b1", spell: "AcidSplash", spellLevel: 0).Configure();
+                FeatureConfigurator.For("09106dcc03321154f955e2d0296a082e").AddKnownSpell(characterClass: "20ce9bf8af32bee4c8557a045ab499b1", spell: "AcidSplash", spellLevel: 0).Configure();
+                FeatureConfigurator.For("2127c37ccc7986e4083665552d6ecd5c").AddKnownSpell(characterClass: "20ce9bf8af32bee4c8557a045ab499b1", spell: "AcidSplash", spellLevel: 0).Configure();
                 FeatureConfigurator.For("e2f8bd7c45dfb954c8c42b168505c783").AddKnownSpell(characterClass: "20ce9bf8af32bee4c8557a045ab499b1", spell: "RayOfFrost", spellLevel: 0).Configure();
+                FeatureConfigurator.For("d91dcec40f768ea47b45bb4c4b2af40d").AddKnownSpell(characterClass: "20ce9bf8af32bee4c8557a045ab499b1", spell: "RayOfFrost", spellLevel: 0).Configure();
+                FeatureConfigurator.For("1267082c536549c4c86f0725b6eea627").AddKnownSpell(characterClass: "20ce9bf8af32bee4c8557a045ab499b1", spell: "RayOfFrost", spellLevel: 0).Configure();
                 FeatureConfigurator.For("7c1fdd831af747b47bb2cce0051f309b").AddKnownSpell(characterClass: "20ce9bf8af32bee4c8557a045ab499b1", spell: "Jolt", spellLevel: 0).Configure();
+                FeatureConfigurator.For("4fb980ffe85793b4194b11d3adb70d9e").AddKnownSpell(characterClass: "20ce9bf8af32bee4c8557a045ab499b1", spell: "Jolt", spellLevel: 0).Configure();
+                FeatureConfigurator.For("3812dcb2fe59ecd449285391db677edc").AddKnownSpell(characterClass: "20ce9bf8af32bee4c8557a045ab499b1", spell: "Jolt", spellLevel: 0).Configure();
                 //Ray Of Frost to Winter (modded)
             }
 
