@@ -81,18 +81,18 @@ namespace PhoenixScalingCantrips.Spells
             }
             if (Settings.IsEnabled("addlessershockinggrasp"))
             {
-                AbilityConfigurator.For("FrostyTouchCast").AddToSpellLists(0, SpellList.Magus, SpellList.Wizard).Configure();
-                SpellListConfigurator.For("4d72e1e7bd6bc4f4caaea7aa43a14639").AddToSpellsByLevel(new SpellLevelList(0) { m_Spells = new() { BlueprintTool.GetRef<BlueprintAbilityReference>("FrostyTouchCast") } }).Configure();
+                AbilityConfigurator.For("LesserShockingGraspCast").AddToSpellLists(0, SpellList.Magus, SpellList.Wizard).Configure();
+                SpellListConfigurator.For("4d72e1e7bd6bc4f4caaea7aa43a14639").AddToSpellsByLevel(new SpellLevelList(0) { m_Spells = new() { BlueprintTool.GetRef<BlueprintAbilityReference>("LesserShockingGraspCast") } }).Configure();
                 if (Settings.IsEnabled("proliferatetoshaman"))
                 {
-                    FeatureConfigurator.For("5d810adea03fb644582eb74de32c75ec").AddKnownSpell(characterClass: "145f1d3d360a7ad48bd95d392c81b38e", spell: "FrostyTouchCast", spellLevel: 0).Configure();
+                    FeatureConfigurator.For("5d810adea03fb644582eb74de32c75ec").AddKnownSpell(characterClass: "145f1d3d360a7ad48bd95d392c81b38e", spell: "FrostyTLesserShockingGraspCastouchCast", spellLevel: 0).Configure();
                     
                 }
                 if (Settings.IsEnabled("proliferatetooracle"))
                 {
-                    FeatureConfigurator.For("7c1fdd831af747b47bb2cce0051f309b").AddKnownSpell(characterClass: "20ce9bf8af32bee4c8557a045ab499b1", spell: "FrostyTouchCast", spellLevel: 0).Configure();
-                    FeatureConfigurator.For("4fb980ffe85793b4194b11d3adb70d9e").AddKnownSpell(characterClass: "20ce9bf8af32bee4c8557a045ab499b1", spell: "FrostyTouchCast", spellLevel: 0).Configure();
-                    FeatureConfigurator.For("3812dcb2fe59ecd449285391db677edc").AddKnownSpell(characterClass: "20ce9bf8af32bee4c8557a045ab499b1", spell: "FrostyTouchCast", spellLevel: 0).Configure();
+                    FeatureConfigurator.For("7c1fdd831af747b47bb2cce0051f309b").AddKnownSpell(characterClass: "20ce9bf8af32bee4c8557a045ab499b1", spell: "LesserShockingGraspCast", spellLevel: 0).Configure();
+                    FeatureConfigurator.For("4fb980ffe85793b4194b11d3adb70d9e").AddKnownSpell(characterClass: "20ce9bf8af32bee4c8557a045ab499b1", spell: "LesserShockingGraspCast", spellLevel: 0).Configure();
+                    FeatureConfigurator.For("3812dcb2fe59ecd449285391db677edc").AddKnownSpell(characterClass: "20ce9bf8af32bee4c8557a045ab499b1", spell: "LesserShockingGraspCast", spellLevel: 0).Configure();
                 }
             }
             if (Settings.IsEnabled("joltformagus"))

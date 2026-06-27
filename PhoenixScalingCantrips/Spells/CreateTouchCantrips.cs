@@ -83,6 +83,7 @@ namespace PhoenixScalingCantrips.Spells
 
         private static BlueprintAbility CreateTouchCantrip(string systemName, string spellGuid, string touchGuid, DamageEnergyType damage, Sprite icon, SpellSchool school = SpellSchool.Evocation, string touchprefabasset = null)
         {
+            Logger.Log("Creating " + systemName);
             SpellDescriptor[] descriptor = new SpellDescriptor[] { };
             if (damage == DamageEnergyType.Fire)
                 descriptor = new SpellDescriptor[] { SpellDescriptor.Fire };
@@ -124,14 +125,14 @@ namespace PhoenixScalingCantrips.Spells
                 {
                     m_Type = Kingmaker.Enums.AbilityRankType.DamageDice,
                     m_BaseValueType = Kingmaker.UnitLogic.Mechanics.Components.ContextRankBaseValueType.CasterLevel,
-                    m_Progression = Kingmaker.UnitLogic.Mechanics.Components.ContextRankProgression.StartPlusDivStep,
-                    m_StepLevel = 2,
+                    m_Progression = Kingmaker.UnitLogic.Mechanics.Components.ContextRankProgression.OnePlusDiv2,
+                    m_StepLevel = 0,
                     m_StartLevel = 0,
                     m_Max = 6
 
                 });
            var touchDone = touch.Configure();
-
+            Logger.Log("Creating " + systemName + "Cast");
             var cantrip = AbilityConfigurator.NewSpell(systemName + "Cast", spellGuid, school, false, descriptor)
                 .SetDisplayName(systemName + ".Name")
                 .SetDescription(systemName + (Settings.IsEnabled("addscaling") ? ".Desc" : ".Desc2"))
