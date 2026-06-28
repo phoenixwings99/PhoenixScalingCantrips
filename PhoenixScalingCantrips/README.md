@@ -11,6 +11,13 @@ Fixing Magus ranged touch access.
 Arrowsong Minstrel (Character Options Plus) gets sonic attack cantrips.
 
 ## Version List
+
+### 1.0.3
+Really fixed Lesser Shocking Grasp Proliferation this time!
+
+### 1.0.2
+Fixed Lesser Shocking Grasp Proliferation
+
 ### 1.0.1
 Fixed incorrect BlueprintAbility reference when adding melee cantrips to spell lists - spellstrike works now.
 
